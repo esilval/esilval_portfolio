@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edwin Alexander Silva Lopez - Senior Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #60a5fa;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+        
+        /* Background Animation */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Typing Animation */
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid var(--primary-color);
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary-color); }
+        }
+        
+        /* Section Transitions */
+        .section-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .section-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Navigation */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: var(--primary-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .language-btn {
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.875rem;
+        }
+        
+        .language-btn.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+        }
+        
+        .language-btn:not(.active) {
+            color: var(--text-primary);
+        }
+        
+        .language-btn:not(.active):hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Enhanced Timeline */
+        .timeline {
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+        
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 22px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px var(--accent-color);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover .timeline-dot {
+            transform: scale(1.2);
+            box-shadow: 0 0 0 8px rgba(96, 165, 250, 0.3);
+        }
+        
+        /* Enhanced Skill Cards */
+        .skill-card {
+            position: relative;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            overflow: hidden;
+        }
+        
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            transition: left 0.5s;
+        }
+        
+        .skill-card:hover::before {
+            left: 100%;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Progress Bars */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            width: 0;
+            transition: width 2s ease-in-out;
+            border-radius: 4px;
+        }
+        
+        /* Button Animations */
+        .btn-primary {
+            position: relative;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0.4));
+            transition: left 0.5s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+        }
+        
+        /* Particle Effect */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            background: var(--accent-color);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float-particle 6s linear infinite;
+        }
+        
+        @keyframes float-particle {
+            from {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-dot {
+                left: 12px;
+            }
+            
+            .skill-card {
+                padding: 1.5rem;
+            }
+            
+            .language-switcher {
+                padding: 0.3rem;
+                gap: 0.25rem;
+            }
+            
+            .language-btn {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* Scroll Progress Indicator */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            z-index: 1000;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress"></div>
+    
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    
+    <!-- Particles Container -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Header & Hero Section -->
+    <header id="home" class="glass sticky top-0 z-50 mx-4 mt-4 rounded-2xl">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <img class="h-12 w-12 rounded-full border-2 border-blue-300 hover:border-blue-500 transition-all duration-300 hover:scale-110" src="https://avatars.githubusercontent.com/u/22404830?v=4" alt="Avatar de Edwin Silva">
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Sobre mí</a>
+                <a href="#experience" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Experiencia</a>
+                <a href="#skills" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Habilidades</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Contacto</a>
+            </div>
+            
+            <!-- Language Switcher -->
+            <div class="language-switcher">
+                <a href="./index.html" class="language-btn active">
+                    <i class="fas fa-globe mr-1"></i>ES
+                </a>
+                <a href="./index_en.html" class="language-btn">
+                    <i class="fas fa-globe mr-1"></i>EN
+                </a>
+            </div>
+            
+            <button class="md:hidden text-gray-700 text-xl" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#about" class="block py-2 text-gray-700 hover:text-blue-600">Sobre mí</a>
+            <a href="#experience" class="block py-2 text-gray-700 hover:text-blue-600">Experiencia</a>
+            <a href="#skills" class="block py-2 text-gray-700 hover:text-blue-600">Habilidades</a>
+            <a href="#contact" class="block py-2 text-gray-700 hover:text-blue-600">Contacto</a>
+            <div class="border-t pt-4 mt-4">
+                <div class="language-switcher">
+                    <a href="./index.html" class="language-btn active">
+                        <i class="fas fa-globe mr-1"></i>ES
+                    </a>
+                    <a href="./index_en.html" class="language-btn">
+                        <i class="fas fa-globe mr-1"></i>EN
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 md:py-20">
+        <!-- Hero Section -->
+        <section class="text-center min-h-screen flex flex-col justify-center" data-aos="fade-up">
+            <div class="floating">
+                <h1 class="text-5xl md:text-7xl font-black bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent mb-6">
+                    Edwin Alexander Silva Lopez
+                </h1>
+                <div class="typewriter text-2xl md:text-3xl text-blue-700 font-semibold mb-8">
+                    Software Engineer | Software Architect | Backender
+                </div>
+            </div>
+            
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-12" data-aos="fade-up" data-aos-delay="300">
+                Transformando ideas en soluciones tecnológicas escalables con más de 14 años de experiencia
+            </p>
+            
+            <div class="flex justify-center space-x-8 mb-12" data-aos="fade-up" data-aos-delay="500">
+                <a href="mailto:asilv03@gmail.com" class="text-gray-600 hover:text-blue-600 text-3xl transition-all duration-300 hover:scale-125">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://github.com/esilval" target="_blank" class="text-gray-600 hover:text-blue-600 text-3xl transition-all duration-300 hover:scale-125">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/edwinsilva/" target="_blank" class="text-gray-600 hover:text-blue-600 text-3xl transition-all duration-300 hover:scale-125">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="700">
+                <a href="#about" class="btn-primary inline-flex items-center">
+                    <i class="fas fa-user mr-2"></i>
+                    Conoce más sobre mí
+                </a>
+                <a href="#contact" class="btn-primary inline-flex items-center bg-gradient-to-r from-gray-700 to-gray-900">
+                    <i class="fas fa-download mr-2"></i>
+                    Descargar CV
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="mt-32 section-reveal">
+            <h2 class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent" data-aos="fade-down">
+                Sobre Mí
+            </h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="glass p-8 md:p-12 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <p class="text-gray-700 leading-relaxed text-lg mb-6">
+                                Ingeniero de Software Senior con más de <span class="font-bold text-blue-600">14 años de experiencia</span> 
+                                diseñando, desarrollando y desplegando soluciones de software escalables y de alto rendimiento.
+                            </p>
+                            <p class="text-gray-700 leading-relaxed text-lg mb-6">
+                                Experto en desarrollo backend con <span class="font-bold text-blue-600">Java y el ecosistema Spring</span>, 
+                                arquitectura de microservicios y tecnologías en la nube (GCP, AWS, Azure).
+                            </p>
+                            <p class="text-gray-700 leading-relaxed text-lg">
+                                Actualmente finalizando una <span class="font-bold text-blue-600">Maestría en Ingeniería de Software</span> 
+                                para complementar mi experiencia práctica con fundamentos teóricos avanzados.
+                            </p>
+                        </div>
+                        <div class="text-center" data-aos="fade-left" data-aos-delay="400">
+                            <div class="relative inline-block">
+                                <div class="w-64 h-64 rounded-full bg-gradient-to-br from-blue-400 to-purple-600 p-1">
+                                    <div class="w-full h-full rounded-full bg-white flex items-center justify-center">
+                                        <i class="fas fa-code text-6xl text-gray-400"></i>
+                                    </div>
+                                </div>
+                                <div class="absolute -top-4 -right-4 w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg floating">
+                                    14+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="mt-20" data-aos="fade-up">
+            <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center glass p-6 rounded-2xl" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-3xl md:text-4xl font-bold text-blue-600 mb-2" data-counter="14">14</div>
+                    <div class="text-gray-600 font-medium">Años Experiencia</div>
+                </div>
+                <div class="text-center glass p-6 rounded-2xl" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-3xl md:text-4xl font-bold text-blue-600 mb-2" data-counter="50">0</div>
+                    <div class="text-gray-600 font-medium">Proyectos</div>
+                </div>
+                <div class="text-center glass p-6 rounded-2xl" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="text-3xl md:text-4xl font-bold text-blue-600 mb-2" data-counter="10">10</div>
+                    <div class="text-gray-600 font-medium">Tecnologías</div>
+                </div>
+                <div class="text-center glass p-6 rounded-2xl" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="text-3xl md:text-4xl font-bold text-blue-600 mb-2" data-counter="5">5</div>
+                    <div class="text-gray-600 font-medium">Certificaciones</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="mt-32 section-reveal">
+            <h2 class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent" data-aos="fade-down">
+                Experiencia Profesional
+            </h2>
+            <div class="max-w-4xl mx-auto relative timeline">
+                <!-- Item 1: Visa -->
+                <div class="timeline-item mb-16 pl-16" data-aos="fade-right" data-aos-delay="100">
+                    <div class="timeline-dot"></div>
+                    <div class="glass p-8 rounded-2xl">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <div>
+                                <p class="text-sm text-blue-600 font-semibold mb-2">Jun 2022 - Presente</p>
+                                <h3 class="text-2xl font-bold text-gray-800 mb-1">Sr. Software Engineer</h3>
+                                <p class="text-lg font-semibold text-gray-600 mb-4">Visa</p>
+                            </div>
+                            <div class="text-4xl text-blue-600">
+                                <i class="fab fa-cc-visa"></i>
+                            </div>
+                        </div>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
+                                Diseñé y desarrollé componentes clave para soluciones de pago transfronterizo, usando Java 17, Spring Boot y microservicios en GCP.
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
+                                Automaticé despliegues con ArgoCD y Concourse, reduciendo los tiempos de entrega.
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
+                                Lideré la resolución de incidentes críticos en producción.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Item 2: MAS Global -->
+                <div class="timeline-item mb-16 pl-16" data-aos="fade-right" data-aos-delay="200">
+                    <div class="timeline-dot"></div>
+                    <div class="glass p-8 rounded-2xl">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <div>
+                                <p class="text-sm text-blue-600 font-semibold mb-2">Oct 2021 - Abr 2022</p>
+                                <h3 class="text-2xl font-bold text-gray-800 mb-1">Senior Advanced Software Developer</h3>
+                                <p class="text-lg font-semibold text-gray-600 mb-4">MAS Global Consulting</p>
+                            </div>
+                            <div class="text-4xl text-blue-600">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                        </div>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
+                                Lideré una iniciativa interna para integrar herramientas dispares (BambooHR, Oracle OpenAir) en una plataforma unificada usando .NET Core.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Item 3: Globant -->
+                <div class="timeline-item mb-16 pl-16" data-aos="fade-right" data-aos-delay="300">
+                    <div class="timeline-dot"></div>
+                    <div class="glass p-8 rounded-2xl">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <div>
+                                <p class="text-sm text-blue-600 font-semibold mb-2">Sep 2017 - Abr 2021</p>
+                                <h3 class="text-2xl font-bold text-gray-800 mb-1">Java Developer</h3>
+                                <p class="text-lg font-semibold text-gray-600 mb-4">Globant</p>
+                            </div>
+                            <div class="text-4xl text-blue-600">
+                                <i class="fas fa-code-branch"></i>
+                            </div>
+                        </div>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
+                                Desarrollé microservicios para un cliente del sector financiero, mejorando la modularidad y escalabilidad de su plataforma.
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
+                                Migré aplicaciones monolíticas a una arquitectura de contenedores con Docker y Kubernetes en AWS.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="mt-32 section-reveal">
+            <h2 class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent" data-aos="fade-down">
+                Habilidades Técnicas
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="skill-card" data-aos="flip-left" data-aos-delay="100">
+                    <div class="text-4xl text-blue-600 mb-4">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Lenguajes</h3>
+                    <p class="text-gray-600 mb-4">Java (17/11/8), Python, Go, C#, JavaScript, TypeScript, SQL</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-progress="95"></div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Nivel: Experto</p>
+                </div>
+                
+                <div class="skill-card" data-aos="flip-left" data-aos-delay="200">
+                    <div class="text-4xl text-green-600 mb-4">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Backend</h3>
+                    <p class="text-gray-600 mb-4">Spring Boot, Spring Cloud, Spring Security, Hibernate, JPA</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-progress="90"></div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Nivel: Experto</p>
+                </div>
+                
+                <div class="skill-card" data-aos="flip-left" data-aos-delay="300">
+                    <div class="text-4xl text-purple-600 mb-4">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Cloud & DevOps</h3>
+                    <p class="text-gray-600 mb-4">GCP, AWS, Azure, Docker, Kubernetes, Jenkins, ArgoCD</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-progress="85"></div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Nivel: Avanzado</p>
+                </div>
+                
+                <div class="skill-card" data-aos="flip-left" data-aos-delay="400">
+                    <div class="text-4xl text-orange-600 mb-4">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Bases de Datos</h3>
+                    <p class="text-gray-600 mb-4">MySQL, PostgreSQL, Oracle, SQL Server, Spanner, Redis</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-progress="88"></div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Nivel: Experto</p>
+                </div>
+                
+                <div class="skill-card" data-aos="flip-left" data-aos-delay="500">
+                    <div class="text-4xl text-red-600 mb-4">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Arquitectura</h3>
+                    <p class="text-gray-600 mb-4">Microservicios, DDD, Patrones de Diseño, SOLID</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-progress="92"></div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Nivel: Experto</p>
+                </div>
+                
+                <div class="skill-card" data-aos="flip-left" data-aos-delay="600">
+                    <div class="text-4xl text-indigo-600 mb-4">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Educación</h3>
+                    <p class="text-gray-600 mb-4">MSc. Software Engineering (En curso), Dipl. Software Architecture, B.S. Systems Engineering</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-progress="80"></div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Nivel: En progreso</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & CV Download Section -->
+        <section id="contact" class="mt-32 text-center section-reveal">
+            <h2 class="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent" data-aos="fade-down">
+                Contacto y CV
+            </h2>
+            <p class="max-w-2xl mx-auto text-gray-600 mb-12 text-lg" data-aos="fade-up" data-aos-delay="200">
+                Estoy abierto a nuevas oportunidades y desafíos. Si mi perfil se ajusta a sus necesidades, no dude en contactarme o descargar mi CV para más detalles.
+            </p>
+            
+            <!-- Contact Cards -->
+            <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-12">
+                <div class="glass p-6 rounded-2xl" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-4xl text-blue-600 mb-4">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Email</h3>
+                    <a href="mailto:asilv03@gmail.com" class="text-blue-600 hover:text-blue-800 transition-colors">
+                        asilv03@gmail.com
+                    </a>
+                </div>
+                
+                <div class="glass p-6 rounded-2xl" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-4xl text-blue-600 mb-4">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">GitHub</h3>
+                    <a href="https://github.com/esilval" target="_blank" class="text-blue-600 hover:text-blue-800 transition-colors">
+                        github.com/esilval
+                    </a>
+                </div>
+                
+                <div class="glass p-6 rounded-2xl" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="text-4xl text-blue-600 mb-4">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/edwinsilva/" target="_blank" class="text-blue-600 hover:text-blue-800 transition-colors">
+                        Conectar en LinkedIn
+                    </a>
+                </div>
+            </div>
+            
+            <!-- CV Download Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6" data-aos="fade-up" data-aos-delay="400">
+                <a href="./2025_edwinsilva_ES.html" download class="btn-primary inline-flex items-center text-lg px-8 py-4">
+                    <i class="fas fa-download mr-3"></i> 
+                    Descargar CV (Español)
+                </a>
+                <a href="./2025_edwinsilva_EN.html" download class="btn-primary inline-flex items-center text-lg px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-900">
+                    <i class="fas fa-download mr-3"></i> 
+                    Download CV (English)
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="glass text-center py-8 mt-20 mx-4 mb-4 rounded-2xl" data-aos="fade-up">
+        <p class="text-gray-600">
+            &copy; 2025 Edwin Alexander Silva Lopez. Todos los derechos reservados.
+            <br>
+            <span class="text-sm">Diseñado con ❤️ y tecnología moderna</span>
+        </p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+
+        // Scroll Progress Indicator
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.querySelector('.scroll-progress');
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('[data-counter]');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-counter'));
+                const count = +counter.innerText;
+                const speed = target / 100;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + speed);
+                    setTimeout(() => animateCounters(), 20);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        }
+
+        // Progress Bars Animation
+        function animateProgressBars() {
+            const progressBars = document.querySelectorAll('.progress-fill');
+            progressBars.forEach(bar => {
+                const progress = bar.getAttribute('data-progress');
+                bar.style.width = progress + '%';
+            });
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Trigger counter animation
+                    if (entry.target.querySelector('[data-counter]')) {
+                        animateCounters();
+                    }
+                    
+                    // Trigger progress bars animation
+                    if (entry.target.querySelector('.progress-fill')) {
+                        setTimeout(animateProgressBars, 500);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section-reveal').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Timeline items animation
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Particles Animation
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.width = Math.random() * 10 + 5 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.animationDuration = Math.random() * 3 + 2 + 's';
+            particle.style.opacity = Math.random() * 0.5 + 0.2;
+            
+            document.getElementById('particles').appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 5000);
+        }
+
+        // Create particles periodically
+        setInterval(createParticle, 300);
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Typewriter effect
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typewriter effect
+        window.addEventListener('load', () => {
+            const typewriterElement = document.querySelector('.typewriter');
+            if (typewriterElement) {
+                const text = typewriterElement.textContent;
+                setTimeout(() => {
+                    typeWriter(typewriterElement, text, 100);
+                }, 1000);
+            }
+        });
+    </script>
+
+</body>
+</html>
