@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Edwin Alexander Silva Lopez</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-print-color-adjust: exact; /* For Chrome, Safari */
+            color-adjust: exact; /* For Firefox */
+        }
+        .section-title {
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e3a8a; /* A professional blue */
+        }
+        .print-show {
+            display: none;
+        }
+        @media print {
+            body {
+                font-size: 10pt;
+            }
+            .no-print {
+                display: none;
+            }
+            .print-show {
+                display: block;
+            }
+            .main-container {
+                box-shadow: none;
+                margin: 0;
+                border: none;
+            }
+            .left-column {
+                background-color: #f3f4f6 !important; /* Ensure background prints */
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-0 sm:p-4 md:p-8">
+
+    <div class="main-container max-w-4xl mx-auto bg-white rounded-lg shadow-2xl border border-gray-200 overflow-hidden">
+        <div class="flex flex-col md:flex-row">
+            <!-- Left Column -->
+            <aside class="left-column w-full md:w-1/3 bg-gray-50 p-6 md:p-8">
+                <div class="flex flex-col items-center md:items-start">
+                    <h1 class="text-3xl font-extrabold text-gray-800 text-center md:text-left">Edwin Alexander</h1>
+                    <h1 class="text-3xl font-extrabold text-gray-800 text-center md:text-left mb-4">Silva Lopez</h1>
+                    
+                    <div class="mt-6 w-full">
+                        <h2 class="text-lg font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-4">CONTACT</h2>
+                        <ul class="space-y-3 text-sm text-gray-600">
+                            <li class="flex items-center">
+                                <i class="fas fa-map-marker-alt w-5 text-blue-700"></i>
+                                <span>Bogotá, Colombia</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-phone-alt w-5 text-blue-700"></i>
+                                <span>+57 311 838 0114</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-envelope w-5 text-blue-700"></i>
+                                <a href="mailto:asilv03@gmail.com" class="hover:text-blue-600">asilv03@gmail.com</a>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fab fa-linkedin w-5 text-blue-700"></i>
+                                <a href="https://www.linkedin.com/in/edwinsilva/" class="hover:text-blue-600">linkedin.com/in/edwinsilva</a>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fab fa-github w-5 text-blue-700"></i>
+                                <a href="https://github.com/esilval" class="hover:text-blue-600">github.com/esilval</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-8 w-full">
+                        <h2 class="text-lg font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-4">SKILLS</h2>
+                        <div class="space-y-4 text-sm">
+                            <div>
+                                <h3 class="font-semibold text-gray-700 mb-1">Languages</h3>
+                                <p class="text-gray-600">Java (17/11/8), Python, Go, C#, JavaScript, TypeScript, SQL</p>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-700 mb-1">Backend</h3>
+                                <p class="text-gray-600">Spring Boot, Spring Cloud, Spring Security, Hibernate, JPA</p>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-700 mb-1">Cloud & DevOps</h3>
+                                <p class="text-gray-600">GCP, AWS, Azure, Docker, Kubernetes, Jenkins, ArgoCD</p>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-700 mb-1">Databases</h3>
+                                <p class="text-gray-600">MySQL, PostgreSQL, Oracle, SQL Server, Spanner, Redis</p>
+                            </div>
+                             <div>
+                                <h3 class="font-semibold text-gray-700 mb-1">Architecture</h3>
+                                <p class="text-gray-600">Microservices, DDD, Design Patterns, SOLID</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 w-full">
+                        <h2 class="text-lg font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-4">EDUCATION</h2>
+                        <div class="space-y-4 text-sm">
+                            <div>
+                                <h3 class="font-semibold text-gray-800">MSc. Software Engineering</h3>
+                                <p class="text-gray-600">Universidad de los Andes</p>
+                                <p class="text-gray-500 italic">In progress (Expected 2025)</p>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Diploma in Software Architecture</h3>
+                                <p class="text-gray-600">Universidad EAN</p>
+                                <p class="text-gray-500 italic">2022</p>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">B.S. in Systems Engineering</h3>
+                                <p class="text-gray-600">Fundación Universidad Central</p>
+                                <p class="text-gray-500 italic">2020</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Column -->
+            <main class="w-full md:w-2/3 p-6 md:p-8">
+                <section>
+                    <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
+                    <p class="text-gray-700 text-sm leading-relaxed">
+                        Senior Software Engineer with over 14 years of experience designing, developing, and deploying scalable, high-performance software solutions. Expert in backend development with Java and the Spring ecosystem, microservices architecture, and cloud technologies (GCP, AWS, Azure). Currently completing a Master's in Software Engineering to complement practical experience with advanced theoretical foundations. Seeking to contribute technical leadership and architectural vision in Senior Engineer, Specialist, or Software Architect roles.
+                    </p>
+                </section>
+
+                <section class="mt-8">
+                    <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
+                    <div class="space-y-6">
+                        <!-- Experience 1: Visa -->
+                        <div class="text-sm">
+                            <div class="flex justify-between items-baseline">
+                                <h3 class="font-bold text-base text-gray-800">Sr. Software Engineer</h3>
+                                <p class="text-gray-500 font-medium">Jun 2022 - Present</p>
+                            </div>
+                            <p class="font-semibold text-gray-700">Visa (Bogotá, Colombia)</p>
+                            <ul class="list-disc list-outside mt-2 ml-4 space-y-1 text-gray-600 leading-relaxed">
+                                <li>Designed and developed key components for new cross-border and domestic payment solutions, using Java 17, Spring Boot, and microservices deployed on GCP.</li>
+                                <li>Automated deployments to development and testing environments using CI/CD tools like ArgoCD and Concourse, reducing delivery times.</li>
+                                <li>Led the resolution of critical production incidents, coordinating teams to diagnose and solve complex platform issues.</li>
+                            </ul>
+                        </div>
+                        <!-- Experience 2: MAS Global -->
+                        <div class="text-sm">
+                            <div class="flex justify-between items-baseline">
+                                <h3 class="font-bold text-base text-gray-800">Senior Advanced Software Developer</h3>
+                                <p class="text-gray-500 font-medium">Oct 2021 - Apr 2022</p>
+                            </div>
+                            <p class="font-semibold text-gray-700">MAS Global Consulting (Bogotá, Colombia)</p>
+                            <ul class="list-disc list-outside mt-2 ml-4 space-y-1 text-gray-600 leading-relaxed">
+                                <li>Led an internal initiative to integrate disparate tools (BambooHR, Oracle OpenAir) into a unified platform using .NET Core and C#.</li>
+                                <li>Developed RESTful APIs to centralize operational data, improving the company's internal process efficiency.</li>
+                            </ul>
+                        </div>
+                        <!-- Experience 3: SEVEN4N -->
+                        <div class="text-sm">
+                            <div class="flex justify-between items-baseline">
+                                <h3 class="font-bold text-base text-gray-800">Backend Developer</h3>
+                                <p class="text-gray-500 font-medium">May 2021 - Oct 2021</p>
+                            </div>
+                            <p class="font-semibold text-gray-700">SEVEN4N (Bogotá, Colombia)</p>
+                            <ul class="list-disc list-outside mt-2 ml-4 space-y-1 text-gray-600 leading-relaxed">
+                                <li>Implemented serverless services with AWS Lambda and NodeJS for asynchronous data processing, optimizing costs and scalability.</li>
+                            </ul>
+                        </div>
+                        <!-- Experience 4: Globant -->
+                        <div class="text-sm">
+                            <div class="flex justify-between items-baseline">
+                                <h3 class="font-bold text-base text-gray-800">Java Developer</h3>
+                                <p class="text-gray-500 font-medium">Sep 2017 - Apr 2021</p>
+                            </div>
+                            <p class="font-semibold text-gray-700">Globant (Bogotá, Colombia)</p>
+                            <ul class="list-disc list-outside mt-2 ml-4 space-y-1 text-gray-600 leading-relaxed">
+                                <li>Developed microservices for a financial sector client using Spring Boot and Spring Cloud, enhancing the modularity and scalability of their main platform.</li>
+                                <li>Migrated monolithic applications to a container-based architecture with Docker and Kubernetes on AWS, increasing service availability.</li>
+                                <li>Acted as a technical lead for junior developers, providing mentorship on code best practices, TDD, and SOLID principles.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="mt-8">
+                    <h2 class="section-title">RELEVANT CERTIFICATIONS</h2>
+                     <div class="space-y-2 text-sm">
+                        <p class="text-gray-700"><span class="font-semibold">Go: The Complete Developer's Guide</span> - Udemy, 2021</p>
+                        <p class="text-gray-700"><span class="font-semibold">Master microservices with Spring Boot and Spring Cloud</span> - Udemy, 2020</p>
+                        <p class="text-gray-700"><span class="font-semibold">SOLID. Object-oriented design principles</span> - Acamica, 2019</p>
+                     </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+</body>
+</html>
